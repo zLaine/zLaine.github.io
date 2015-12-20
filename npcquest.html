@@ -1,0 +1,572 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+		<meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
+		<title>
+			Zack Laine
+		</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	</head>
+	<body>
+		<div class ="body">
+			<div id="leftBar">
+				<div id="topLeftBarSpacer">
+				</div>
+				<a href="index.html">
+					<img id="developerLogo" src='assets/name.png' width='100%'/>
+				</a>
+				<div class="leftBarSpacer">
+				</div>
+				<div class="verticalContentSeperator">
+					<div class="verticalContentSeperatorLine">
+					</div>
+				</div>
+				<div class="leftBarSpacer">
+				</div>
+				<div style="width: 100%; overflow: auto;">
+					<nav class="navbar navbar-default navbar-custom">
+						<div class="container-fluid">
+							<div>
+								<ul class="nav nav-pills nav-stacked">
+									<li><a href="index.html">Home</a></li>
+									<li><a href="about.html">About Me</a></li>
+									<li><a href="#">Code Examples</a></li>
+									<li><a href="#">Contact</a></li>
+								</ul>
+							</div>
+						</div>
+					</nav>
+				</div>
+				<div class="leftBarSpacer">
+				</div>
+				<div class="verticalContentSeperator">
+					<div class="verticalContentSeperatorLine">
+					</div>
+				</div>
+				<div class="leftBarSpacer">
+				</div>
+				<div style="width: 100%; height: 48px;">
+					<div class="leftBarContent" style="font-family: 'Montserrat', sans-serif; width: 100%;">
+						<br><br>
+						<div class ="container-fluid contact-formatting">
+							<div class="row">
+								<div class="col-sm-2">
+									<a href="mailto:zlaine@gmu.edu">
+										<img src="assets/emailIcon.png" class="media" alt="email"/>
+									</a>
+								</div>
+								<div class="col-sm-2">
+									<a href="https://www.linkedin.com/in/zlaine">
+										<img src="assets/linkedinIcon.png" class="media" alt="linkedIn"/>
+									</a>
+								</div>
+								<div class="col-sm-2">
+									<a href="https://www.facebook.com/Zack.Laine">
+										<img src="assets/facebookIcon.png" class="media" alt="facebook"/>
+									</a>
+								</div>
+								<div class="col-sm-2">
+									<a href="https://github.com/zLaine">
+										<img src="assets/githubIcon.png" class="media" alt="github"/>
+									</a>
+								</div>
+								<div class="col-sm-2">
+									<a href="https://twitter.com/Rumtehk_uh">
+										<img src="assets/twitterIcon.png" class="media" alt="twitter"/>
+									</a>
+								</div>
+								<div class="col-sm-2">
+									<a href="http://tehktalk.tumblr.com/">
+										<img src="assets/tumblrIcon.png" class="media" alt="tumblr"/>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="mobileOnly" style="height:16px; width:100%; display: inline-block;">
+				</div>
+			</div>
+			
+			<div id="contentBar">
+				<div>
+					<img src="assets/NPCQuestTitle.png" class="project-header" alt="NPCQuestTitle"/>
+				</div>
+				<div class ="container-fluid content-formatting">
+					<div class="row">
+						<div class="col-sm-4">
+							<p>
+								<h4>
+									<b>Roles: </b>Programmer, Designer
+									<br><b>Engine: </b>Unity
+									<br><b>Language: </b>Javascript
+									<br><b>Team Size: </b>3
+									<br><b>Duration: </b>One semester
+									<br><b>Created: </b>Fall 2014
+									
+								</h4>
+								<br>
+								NPCQuest is a 3D RPG featuring puzzles, a turn-based battle system, and upgradable equipment.  
+								The battle system features unique mechanics for each character.  As programmer I was in charge 
+								of setting up the GUI and battle system for this game, as well as implementing the leveling 
+								system.  While working on the battle system I also created a basic AI for the enemies to follow.  
+								I assisted with the mechanics design for the battle system as well as contributing toward the 
+								game's concept.
+								<br><br>
+								<b>Team members:</b>
+								<br><a href="http://katiehenrygameart.com/">Kain Henry</a>: Art/animation, Lead programmer, lead designer
+								<br>Yan Rodriguez: Music/sound
+							</p>
+						</div>
+						<div class="col-sm-8">
+							<video width=100% controls>
+								<source src="assets/HrothvitnirDemo.mp4" type="video/mp4">
+								Upgrade browser to view this video.
+							</video>
+						</div>
+					</div>
+				</div>
+				
+				<div class="mobileOnly" style="height:16px; width:100%; display: inline-block;">
+				</div>
+			</div>
+			<script>
+				var resizeTime = new Date(1, 1, 2000, 12,00,00);
+				var timeout = false;
+				var delta = 150;
+				$(window).resize(
+					function()
+					{
+						ScrollResize();
+						resizeTime = new Date();
+						if (timeout === false)
+						{
+							timeout = true;
+							setTimeout(resizeEnd, delta);
+						}
+						ResizePage();
+					}
+				);
+
+				function resizeEnd()
+				{
+					if (new Date() - resizeTime < delta)
+					{
+						setTimeout(resizeEnd, delta);
+					}
+					else
+					{
+						ResizePage();
+						timeout = false;
+					}
+				}
+				
+				function ResizePage()
+				{
+					var leftBarWidth = 400;
+					var mobile = false;
+					if ($(window).width() > 1400)
+					{
+						$( "#leftBar" ).css( "width", "400px" );
+					}
+					else if ($(window).width() > 1024)
+					{
+						//leftBarWidth = Math.round($(window).width() * 0.36);
+						//$( "#leftBar" ).css( "width", leftBarWidth + "px" );
+						$( "#leftBar" ).css( "width", "400px" );
+					}
+					else if ($(window).width() > 900)
+					{
+						//$( "#leftBar" ).css( "width", "320px" );
+						$( "#leftBar" ).css( "width", "400px" );
+					}
+					else
+					{
+						$( "#leftBar" ).css( "width", $(window).width() + "px");
+						mobile = true;
+					}
+					
+					if ($(window).width() <= 1024 || $(window).height() < 628)
+					{
+						$( ".leftBarContent" ).css(
+							{
+								"width": "90%",
+								"margin-left": "-45%"
+							}
+						);
+						
+						$( ".verticalContentSeperator" ).css(
+							{
+								"height": "1px"
+							}
+						);
+						
+						$( ".verticalContentSeperatorLine" ).css(
+							{
+								"width": "64px",
+								"margin-left": "-32px"
+							}
+						);
+						
+						$( ".leftBarSpacer" ).css( "height", "9px" );
+						
+						if (($("#leftBar").width() < 400 && $(window).width() > 512) || ($(window).width() < 400))
+						{
+							//small
+							$( "#developerLogo" ).attr("src", "assets/nameSmall.png");
+						}
+						else if ($(window).width() <= 640)
+						{
+							//medium
+							$( "#developerLogo" ).attr("src", "assets/nameSmall.png");
+						}
+						else
+						{
+							//regular size
+							$( "#developerLogo" ).attr("src", "assets/nameSmall.png");
+						}
+					}
+					else
+					{
+						$( ".leftBarContent" ).css(
+							{
+								"width": "80%",
+								"margin-left": "-40%"
+							}
+						);
+						
+						$( ".verticalContentSeperator" ).css(
+							{
+								"height": "3px"
+							}
+						);
+						
+						$( ".verticalContentSeperatorLine" ).css(
+							{
+								"width": "128px",
+								"margin-left": "-64px"
+							}
+						);
+						
+						$( ".leftBarSpacer" ).css( "height", "16px" );
+						
+						$( "#developerLogo" ).attr("src", "img/developer_name_and_title_medium.png");
+					}
+					
+					if ($(window).height() < 676 || mobile)
+					{
+						$( "#topLeftBarSpacer" ).css( "height", "16px" );
+					}
+					else
+					{
+						$( "#topLeftBarSpacer" ).css( "height", "64px" );
+					}
+													
+					if (mobile)
+					{
+						$( ".mobileErase" ).css(
+							{
+								"display": "none"
+							}
+						);
+						
+						$( ".mobileOnly" ).css(
+							{
+								"display": "inline-block"
+							}
+						);
+						
+						$( ".mobileOnlyInline" ).css(
+							{
+								"display": "inline-block"
+							}
+						);
+						$( "#leftBar" ).css(
+							{
+								"height": "auto"
+							}
+						);
+					}
+					else
+					{
+						$( ".mobileErase" ).css(
+							{
+								"display": "inline"
+							}
+						);
+						
+						$( ".mobileOnly" ).css(
+							{
+								"display": "none"
+							}
+						);
+						
+						$( ".mobileOnlyInline" ).css(
+							{
+								"display": "none"
+							}
+						);
+						
+						$( "#leftBar" ).css(
+							{
+								"height": "100%"
+							}
+						);
+					}
+					ResizeContent();
+				}
+				
+				function ResizeContentBar()
+				{
+					var contentWidth = 900;
+					if ($(window).width() > 900)
+					{
+						contentWidth = $('body').innerWidth() - $( "#leftBar" ).width();
+						$( "#contentBar" ).css(
+							{
+								"width": contentWidth + "px",
+								"margin-left": Math.floor($( "#leftBar" ).width()) - 1 + "px",
+								"margin-top": "0px",
+								"position": "absolute"
+							}
+						);
+					}
+					else
+					{
+						contentWidth = $(window).width();
+						$( "#contentBar" ).css(
+							{
+								"width": contentWidth + "px",
+								"margin-left": "0px",
+								"margin-top": "0px",
+								"position" : "relative"
+							}
+						);
+					}
+					return contentWidth;
+				}
+				
+				function ResizeContent()
+				{
+					var contentWidth = ResizeContentBar();
+					
+					if ($('body').innerWidth() >= 1600)
+					{
+						var scaleDown = 0.85;
+						
+						if ($('body').innerWidth() >= 2000)
+						{
+							scaleDown = 0.7;
+						}
+						
+						var oneMinusScaleDown = 1.0 - scaleDown;
+						
+						var newWidth = Math.round(contentWidth * scaleDown);
+						
+						$( ".contentBox" ).css
+						(
+							{
+								"width" : newWidth + "px",
+								"margin-left" : Math.floor(contentWidth * (oneMinusScaleDown * 0.5)) + "px"
+							}
+						);
+						
+						$( ".contentBoxTitleAndImage" ).css
+						(
+							{
+								"width" : Math.floor(newWidth * 0.65) + "px"
+							}
+						);
+						
+						$( ".contentBoxDescription" ).css
+						(
+							{
+								"width" : Math.floor(newWidth * 0.3) + "px",
+								"margin-top" : "96px",
+								"margin-left" : "5%",
+								"font-size" : "100%"
+							}
+						);
+						
+						$( ".contentBoxTitle" ).css
+						(
+							{
+								"height" : "96px",
+								"line-height" : "96px"
+							}
+						);
+					}
+					else if ($('body').innerWidth() < 1600 && $('body').innerWidth() > 1100)
+					{
+						var newWidth = Math.round(contentWidth * 0.9);
+						$( ".contentBox" ).css
+						(
+							{
+								"width" : newWidth + "px",
+								"margin-left" : Math.floor(contentWidth * 0.05) + "px"
+							}
+						);
+						
+						$( ".contentBoxTitleAndImage" ).css
+						(
+							{
+								"width" : Math.floor(newWidth * 0.55) + "px"
+							}
+						);
+						
+						$( ".contentBoxDescription" ).css
+						(
+							{
+								"width" : Math.floor(newWidth * 0.4) + "px",
+								"margin-top" : "64px",
+								"margin-left" : "5%",
+								"font-size" : "100%"
+							}
+						);
+						
+						$( ".contentBoxTitle" ).css
+						(
+							{
+								"height" : "64px",
+								"line-height" : "64px"
+							}
+						);
+					}
+					else if ( $('body').innerWidth() > 900)
+					{
+						var newWidth = Math.round(contentWidth * 0.95);
+						$( ".contentBox" ).css
+						(
+							{
+								"width" : newWidth + "px",
+								"margin-left" : Math.floor(contentWidth * 0.025) + "px"
+							}
+						);
+						
+						$( ".contentBoxTitleAndImage" ).css
+						(
+							{
+								"width" : Math.floor(newWidth * 0.6) + "px"
+							}
+						);
+						
+						$( ".contentBoxDescription" ).css
+						(
+							{
+								"width" : Math.floor(newWidth * 0.35) + "px",
+								"margin-top" : "64px",
+								"margin-left" : "5%",
+								"font-size" : "100%"
+							}
+						);
+						
+						$( ".contentBoxTitle" ).css
+						(
+							{
+								"height" : "64px",
+								"line-height" : "64px"
+							}
+						);
+					}
+					else
+					{
+						var newWidth = contentWidth;
+						$( ".contentBox" ).css
+						(
+							{
+								"width" : newWidth + "px",
+								"margin-left" : "0px"
+							}
+						);
+						
+						$( ".contentBoxTitleAndImage" ).css
+						(
+							{
+								"width" : newWidth + "px",
+								"margin-left" : "0px"
+							}
+						);
+						$( ".contentBoxDescription" ).css
+						(
+							{
+								"width" : (newWidth - 32) + "px",
+								"margin-top" : "16px",
+								"margin-left" : "16px",
+								"font-size" : "110%"
+							}
+						);
+						
+						$( ".contentBoxTitle" ).css
+						(
+							{
+								"height" : "64px",
+								"line-height" : "64px"
+							}
+						);
+					}
+				}
+				
+				/*function CopyrightYears()
+				{
+					var date = new Date();
+					var year = date.getFullYear();
+					if (year != 2015)
+					{
+						year = "2015-" + year;
+					}
+					$( "#copyright" ).html("©" + year + " Zack Laine");
+					$( "#copyrightMobile" ).html("©" + year + " Zack Laine");
+				} */
+				
+				$( document ).ready
+				(
+					function()
+					{
+						ResizePage();
+						CopyrightYears();
+					}
+				);
+				
+				function ScrollResize()
+				{
+					if ($(window).width() > 900)
+					{
+						var top = $( window ).scrollTop();
+						var maxTop = ($( "#contentBar" ).height() + 32 - $( window ).height());
+						if (top > maxTop)
+						{
+							$ ( window ).scrollTop( $( "#contentBar" ).height() + 32 - $( window ).height() );
+						}
+						
+						$( "#leftBar" ).css
+						(
+							{
+								"margin-top" : $( window ).scrollTop()
+							}
+						);
+						
+					}
+					else
+					{
+						$( "#leftBar" ).css
+						(
+							{
+								"margin-top" : "0px"
+							}
+						);
+					}
+				}
+				$( window ).scroll(
+					function()
+					{
+						ScrollResize();
+					}
+				);
+			</script>
+		</div>
+	</body>
+</html>

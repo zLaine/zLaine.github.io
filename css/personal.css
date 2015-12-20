@@ -1,0 +1,80 @@
+body
+{
+	background-color: #000000;
+	height: 100vh;
+}
+
+html{
+	height: 100vh;
+}
+
+.sizing {
+	display: table;
+	margin-left: auto;
+	margin-right: auto;
+	width: 1200px;
+	max-width: 100%;
+}
+
+.fullHeight{
+	height: 100% !important;
+	overflow: auto !important;
+}
+
+.img-resize{
+	width: 100%;
+	height: auto;
+}
+
+.quarter-img{
+	width: 24.6%;
+	height: auto;
+}
+.third-img{
+	width: 33%;
+	height: auto;
+}
+
+.black-border{
+	border: 1px solid rgb(0, 0, 0);
+}
+
+.navbar-custom {
+	color: #FFFFFF;
+	background-color: #AED994;
+	border-color: #000000;
+	border: 0px;
+}
+
+/*Changes the padding of the navbar */
+.nav > li > a{
+	padding: 20px 1px;
+}
+
+/*Changes the mouseover text color of the navbar. Set to background to remove.*/
+.nav > li > a:focus, .nav > li > a:hover{
+	background-color: AED994;
+}
+
+/*Changes the text color of the navbar*/
+.navbar-default .navbar-nav > li > a, .navbar-default .navbar-nav > li > a{
+	color: #FFFFFF
+}	
+
+.fixedMargins {
+	padding-top: 20px;
+}
+
+.bottomPadding{
+	padding-bottom:500px;
+}
+
+.well {
+	background: #BEE7A5;
+	color: #000000;
+	border-color: #000000;
+}
+
+.backgroundColor{
+	background-color:#AED994;
+]

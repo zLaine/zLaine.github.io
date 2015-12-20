@@ -1,0 +1,27 @@
+html,body {
+  height:100vh;  
+  max-width: 1500px;
+  margin: 0 auto;
+  padding-top: 00px;  
+}
+/*
+#wrapper {
+  height: 100%;
+  overflow: auto;
+}
+*/   
+.container .row .col-md-6 { 
+  height: 100vh;
+  overflow: auto;  
+} 
+
+.navbar-custom {
+	color: #FFFFFF;
+	background-color: #AED994;
+	border-color: #000000;
+	border: 0px;
+}
+
+.testColor{
+	background-color: #AED994;
+}
