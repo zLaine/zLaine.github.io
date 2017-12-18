@@ -90,6 +90,28 @@ body
 	color: #1dc6ff;
 }
 
+#contentBar a:focus
+{
+	color: #ffffff;
+}
+
+#contentBar a:hover
+{
+	color: #ffffff;
+}
+
+#contentBar .nav-pills > li.active > a
+{
+	background-color: #1dc6ff;
+	color: #ffffff;
+}
+
+#contentBar .nav-tabs
+{
+	border-bottom-width: 1px;
+	border-bottom-color: rgb(221, 221, 221);
+}
+
 .contentSeperator
 {
 	height: 512px;
@@ -207,5 +229,26 @@ body
 
 .contact-formatting
 {
-	
+
+
+}
+.contact-link
+{
+	text-decoration: none;
+	border: 0 none;
+	padding-left: 2%;
+	padding-right: 2%;	
+}
+
+.center
+{
+	vertical-align:middle;
+    height: 100%;
+    width: 100%;
+}
+
+.pre-scrollable
+{
+	max-height: 600px !important;
+	overflow: auto;
 }

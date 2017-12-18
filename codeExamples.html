@@ -1,0 +1,2013 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+		<meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
+		<title>
+			Zack Laine
+		</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	</head>
+	<body>
+		<div class ="body">
+			<div id="leftBar">
+				<div id="topLeftBarSpacer">
+				</div>
+				<a href="index.html">
+					<img id="developerLogo" src='assets/name.png' width='100%'/>
+				</a>
+				<div class="leftBarSpacer">
+				</div>
+				<div class="verticalContentSeperator">
+					<div class="verticalContentSeperatorLine">
+					</div>
+				</div>
+				<div class="leftBarSpacer">
+				</div>
+				<div style="width: 100%; overflow: auto;">
+					<nav class="navbar navbar-default navbar-custom">
+						<div class="container-fluid">
+							<div>
+								<ul class="nav nav-pills nav-stacked">
+									<li><a href="index.html">Home</a></li>
+									<li><a href="about.html">About Me</a></li>
+									<li><a href="codeExamples.html">Code Examples</a></li>
+									<li><a href="#">Contact</a></li>
+								</ul>
+							</div>
+						</div>
+					</nav>
+				</div>
+				<div class="leftBarSpacer">
+				</div>
+				<div class="verticalContentSeperator">
+					<div class="verticalContentSeperatorLine">
+					</div>
+				</div>
+				<div class="leftBarSpacer">
+				</div>
+				<div style="width: 100%; overflow: auto;">
+					<div class="leftBarContent" style="font-family: 'Montserrat', sans-serif; width: 100%;">
+						<br><br>
+						<div class ="container-fluid" style="vertical-align: middle;">
+							<div class="row">
+								<div class="col-sm-2">
+								</div>
+								<div class="col-sm-2">
+									<a href="mailto:ztlaine@gmail.com">
+										<img src="assets/emailSmall.png" class="media" alt="email"/>
+									</a>
+								</div>
+								<div class="col-sm-2">
+									<a href="https://www.linkedin.com/in/zlaine">
+										<img src="assets/linkedinSmall.png" class="media" alt="linkedIn"/>
+									</a>
+								</div>
+								<div class="col-sm-2">
+									<a href="https://www.facebook.com/Zack.Laine">
+										<img src="assets/facebookSmall.png" class="media" alt="facebook"/>
+									</a>
+								</div>
+								<!--<div class="col-sm-2">
+									<a href="https://github.com/zLaine">
+										<img src="assets/githubSmall.png" class="media" alt="github"/>
+									</a>
+								</div> !-->
+								<div class="col-sm-2">
+									<a href="https://twitter.com/Rumtehk_uh">
+										<img src="assets/twitterSmall.png" class="media" alt="twitter"/>
+									</a>
+								</div>
+								<div class="col-sm-2">
+									<!--<a href="http://tehktalk.tumblr.com/">
+										<img src="assets/tumblrSmall.png" class="media" alt="tumblr"/>
+									</a>!-->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="mobileOnly" style="height:16px; width:100%; display: inline-block;">
+				</div>
+			</div>
+			
+			<div id="contentBar">
+				<div>
+					<img src="assets/CodeExamplesTitle.png" class="project-header" alt=""/>
+				</div>
+				<div class ="container-fluid content-formatting">
+					<ul class="nav nav-tabs">
+					  <li class="active"><a data-toggle="tab" href="#game_assets">Game Asset Library</a></li>
+					  <li><a data-toggle="tab" href="#other_code">Other Code</a></li>
+					</ul>
+
+					<div class="tab-content">
+						<div id="game_assets" class="tab-pane fade in active">
+							<div class="row">
+								<div class="col-sm-3">
+									<ul class="nav nav-pills nav-stacked">
+									  <li class="active"><a data-toggle="pill" href="#example1">Wandering Enemy</a></li>
+									  <li><a data-toggle="pill" href="#example2">Alert Enemy</a></li>
+									  <li><a data-toggle="pill" href="#example3">Mouse Player Movement</a></li>
+									</ul>
+								</div>
+								<div class="col-sm-9">
+									<div class="tab-content">
+									  <div id="example1" class="tab-pane fade in active">
+										<div class="col-sm-3">
+											<p>
+												<br>
+												<b>Language:</b> C#
+												<br><br>
+												<b>Function:</b> A very basic script that causes the object to wander around a top-down environment.
+												<br><br>
+												Allows animations for both symmetrical and asymmetrical objects. 
+												(Asymmetrical objects need to be referred to specifically or they will default to simply flipping the animation.)
+											</p>
+										</div>
+										<div class="col-sm-9">
+											<pre class="pre-scrollable">
+												<code>
+public class WanderEnemy : MonoBehaviour {
+
+	public Vector3 targetLocation;
+	Vector3 currentLocation;
+	Vector3 previousLocation;
+
+	bool isPaused;
+
+	Animator walk;
+
+	public float walkSpeed;
+	public bool hasAnimation;
+	public bool walkRight;
+
+	// Use this for initialization
+	void Start()
+	{
+		//Be sure to fill in correct coordinates for the area where you want the object to wander around
+		targetLocation = new Vector3(Random.Range(-2F, 2.6F), Random.Range(-1F, 2.4F), 0);
+		previousLocation = transform.position;
+
+		walk = GetComponent<Animator>();
+	}
+
+	// Update is called once per frame
+	void Update()
+	{
+		currentLocation = transform.position;
+
+
+		if (Time.timeScale != 0)
+		{
+
+			if (currentLocation == targetLocation)
+			{
+				targetLocation = new Vector3(Random.Range(-2F, 2.6F), Random.Range(-1F, 2.4F), 0);
+			}
+
+			transform.position = Vector3.MoveTowards(transform.position, targetLocation, walkSpeed);
+
+			//controls the walking animations
+			//this one works for asymmetrical characters
+			if (hasAnimation == true && this.gameObject.name == "Odin")
+			{
+				if (previousLocation.x < transform.position.x)
+				{
+					walk.SetBool("walkRight", true);
+					walkRight = true;
+				}
+				else
+				{
+					walk.SetBool("walkRight", false);
+					walkRight = false;
+				}
+
+				previousLocation = currentLocation;
+			}
+			//symmetrical characters
+			else if (hasAnimation == true)
+			{
+				if (previousLocation.x < transform.position.x)
+				{
+					Vector3 flipping = transform.localScale;
+					flipping.x = Mathf.Abs(flipping.x);
+					transform.localScale = flipping;
+					walkRight = true;
+				}
+				else
+				{
+					Vector3 flipping = transform.localScale;
+					flipping.x = -Mathf.Abs(flipping.x);
+					transform.localScale = flipping;
+					walkRight = false;
+				}
+
+				previousLocation = currentLocation;
+			}
+		}
+	}
+}
+												</code>
+											</pre>
+										</div>
+									  </div>
+									  <div id="example2" class="tab-pane fade">
+										<div class="col-sm-3">
+											<p>
+												<br>
+												<b>Language:</b> C#
+												<br><br>
+												<b>Function:</b> A script that causes an enemy to follow the player and call for another (specific) enemy to come to the player's location.
+											</p>
+										</div>
+										<div class="col-sm-9">
+											<pre class="pre-scrollable">
+												<code>
+public class AlertEnemy : MonoBehaviour {
+
+    Vector3 targetLocation;
+    Vector3 currentLocation;
+    Vector3 previousLocation;
+
+    Animator walk;
+
+    public float walkSpeed;
+    public bool hasAnimation;
+    public bool walkRight;
+
+    // Use this for initialization
+    void Start()
+    {
+        targetLocation = new Vector3(Random.Range(-2F, 2.6F), Random.Range(-1F, 2.4F), 0);
+        previousLocation = transform.position;
+
+        walk = GetComponent<Animator>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        currentLocation = transform.position;
+
+        if (Time.timeScale != 0)
+        {
+
+            if (currentLocation == targetLocation)
+            {
+                targetLocation = new Vector3(Random.Range(-2F, 2.6F), Random.Range(-1F, 2.4F), 0);
+            }
+
+            transform.position = Vector3.MoveTowards(transform.position, targetLocation, walkSpeed);
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D collider)
+    {
+        //follows player and tells Odin to go to player
+        if (collider.transform.tag == "Player" && collider.GetComponent<MousePlayerControl>().hiding == false)
+        {
+            Vector3 wolfPosition = collider.transform.position;
+            targetLocation = wolfPosition;
+            GameObject odin = GameObject.Find("Odin");
+
+            odin.GetComponent<WanderEnemy>().targetLocation = wolfPosition;
+        }
+
+    }
+}
+												</code>
+											</pre>
+										</div>
+									  </div>
+									  <div id="example3" class="tab-pane fade">
+										<div class="col-sm-3">
+											<p>
+												<br>
+												<b>Language:</b> C#
+												<br><br>
+												<b>Function:</b> A character movement script for a top down environment.
+												Allows player to move the mouse in a direction and click, and have the character follow the mouse.
+											</p>
+										</div>
+										<div class="col-sm-9">
+											<pre class="pre-scrollable">
+												<code>
+//Fixed Update resolves regularly, before physics finish
+void FixedUpdate()
+{
+	//flips the sprite based on mouse position
+	Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+	if (mousePosition.x > GetComponent<Renderer>().bounds.center.x && flipped == true)
+	{
+		Vector3 flipping = transform.localScale;
+		flipping.x *= -1;
+		transform.localScale = flipping;
+		flipped = false;
+	}
+	else if (mousePosition.x < GetComponent<Renderer>().bounds.center.x && flipped == false)
+	{
+		Vector3 flipping = transform.localScale;
+		flipping.x *= -1;
+		transform.localScale = flipping;
+		flipped = true;
+	}
+
+	//moves toward mouse position
+	float input = Input.GetAxis("Horizontal");
+	if (input > 0)
+	{
+		//moves towards the mouse at specified speed
+		transform.position = Vector3.MoveTowards(transform.position, mousePosition, playerSpeed);
+
+		//controls walk animation
+		wolfWalk.SetFloat("wolfSpeed", 1);
+
+		//plays sound
+		source.Play();
+
+		//prevents the z from changing, fixes bug where character moved in front of camera
+		transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+	}
+	else
+	{
+		//stops walk animation
+		wolfWalk.SetFloat("wolfSpeed", 0);
+
+		//stops sound
+		source.Stop();
+	}
+}
+												</code>
+											</pre>
+										</div>
+									  </div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="other_code" class="tab-pane fade">
+							<div class="row">
+								<div class="col-sm-3">
+									<ul class="nav nav-pills nav-stacked">
+									  <li class="active"><a data-toggle="pill" href="#otherCode1">Sarvi Peli</a></li>
+									  <li><a data-toggle="pill" href="#otherCode2">Robot Simulation</a></li>
+									  <li><a data-toggle="pill" href="#otherCode3">Flight</a></li>
+									  <li><a data-toggle="pill" href="#otherCode4">Combine</a></li>
+									</ul>
+								</div>
+								<div class="col-sm-9">
+									<div class="tab-content">
+									  <div id="otherCode1" class="tab-pane fade in active">
+										<div class="col-sm-3">
+											<p>
+												<br>
+												<b>Language:</b> C
+												<br><br>
+												<b>Function:</b> A digital version of an ancient antler throwing game created for CS 262 at George Mason University.
+											</p>
+										</div>
+										<div class="col-sm-9">
+											<pre class="pre-scrollable">
+												<code>
+//Zack Laine
+//CS 262, Section 003
+//Project 1: Sarvi Peli
+
+#include <stdio.h>
+#include <stdlib.h>
+
+void EnterRandomSeed();
+int scoringPlayer(int randNum, int playerScore, int *playerBank, int *playerTurn, int *compTurn);
+int scoringComp(int randNum, int compScore, int *compBank,  int *playerTurn, int *compTurn);
+char keepThrowing();
+int gameLoop(int *playerStake, int *compStake);
+int playAgain();
+
+//EnterRandomSeed
+//Asks player for a seed and sets it to be used when random() is called
+//Pre-condition: None
+//Post-condition: None
+void EnterRandomSeed()
+{
+	unsigned int myRandomSeed;
+	printf("Please enter a random number seed: ");
+	scanf(" %d", &myRandomSeed);
+	srandom(myRandomSeed);
+}
+
+//scoringPlayer
+//Handles the evaluation of a random number into a score, updates the score (and bank if necessary), and changes the turn if Suljie or Rikki Teline are encountered
+//Pre-condition: Takes a random number, the player's score, a reference to the player's bank, a reference to the player's turn, and a reference to the computer's turn (turn values are booleans represented as ints)
+//Post-condition: Updates turns and banks if necessary, and return's the score for the throw
+int scoringPlayer(int randNum, int playerScore, int *playerBank, int *playerTurn, int *compTurn)
+{
+	if(randNum <= 15)
+	{
+		printf("You got a Rikki Teline. Your turn ends.\n");
+		playerScore = 0;
+		*playerTurn = 0;
+		*compTurn = 1;
+		printf("----------------------------------------------------------------------------------------\n");
+	}
+	else if(randNum >= 16 && randNum <= 30)
+	{
+		printf("You got a Suljie Teline. You add %d to your bank.\n", playerScore);
+		*playerBank += playerScore;
+		playerScore = 0;
+		*playerTurn = 0;
+                *compTurn = 1;
+		printf("----------------------------------------------------------------------------------------\n");
+	}
+	else if(randNum >= 31 && randNum <= 54)
+	{
+		playerScore = playerScore + 2;
+		printf("You got two!\n");
+		printf("You have %d points.\n", playerScore);
+	}
+	else if(randNum >= 55 && randNum <= 69)
+	{
+		playerScore = playerScore + 3;
+		printf("You got three!\n");
+		printf("You have %d points.\n", playerScore);
+	}
+	else if(randNum >= 70 && randNum <= 82)
+	{
+		playerScore = playerScore + 5;
+		printf("You got five!\n");
+		printf("You have %d points.\n", playerScore);
+	}
+	else if(randNum >= 83 && randNum <= 91)
+	{
+		playerScore = playerScore + 10;
+		printf("You got ten!\n");
+		printf("You have %d points.\n", playerScore);
+	}
+	else if(randNum >= 92 && randNum <= 99)
+	{
+		playerScore = playerScore + 15;
+		printf("You got fifteen!\n");
+		printf("You have %d points.\n", playerScore);
+	}
+	return playerScore;
+}
+
+//scoringComp
+//Handles the evaluation of a random number into a score, updates the score (and bank if necessary), and changes the turn if Suljie or Rikki Teline are encountered
+//Pre-condition: Takes a random number, the computer's score, a reference to the computer's bank, a reference to the player's turn, and a reference to the computer's turn (turn values are booleans represented as ints)
+//Post-condition: Updates turns and banks if necessary, and return's the score for the throw
+int scoringComp(int randNum, int compScore, int *compBank, int *playerTurn, int *compTurn)
+{
+	if(randNum <= 15)
+	{
+		printf("Computer got a Rikki Teline. Its turn ends.\n");
+		compScore = 0;
+		*playerTurn = 1;
+		*compTurn = 0;
+		printf("----------------------------------------------------------------------------------------\n");
+	}
+	else if(randNum >= 16 && randNum <= 30)
+	{
+		printf("Computer got a Suljie Teline. Its turn ends.\n");
+		*compBank += compScore;
+                compScore = 0;
+		*playerTurn = 1;
+                *compTurn = 0;
+		printf("----------------------------------------------------------------------------------------\n");
+
+	}
+	else if(randNum >= 31 && randNum <= 54)
+	{
+		printf("Computer got two.\n");
+		compScore = compScore + 2;
+	}
+	else if(randNum >= 55 && randNum <= 69)
+	{
+		printf("Computer got three.\n");
+		compScore = compScore + 3;
+	}
+	else if(randNum >= 70 && randNum <= 82)
+	{
+		printf("Computer got five.\n");
+		compScore = compScore + 5;
+	}
+	else if(randNum >= 83 && randNum <= 91)
+	{
+		printf("Computer got ten.\n");
+		compScore = compScore + 10;
+	}
+	else if(randNum >= 92 && randNum <= 99)
+	{
+		printf("Computer got fifteen.\n");
+		compScore = compScore + 15;
+	}
+	return compScore;
+}
+
+//keepThrowing
+//Sees whether a player would like to end their turn, or keep throwing their antler
+//Pre-condition: none
+//Post-condition: Returns a user-entered character representing if they want to throw again or not
+char keepThrowing()
+{
+	char throwAgain = 'n';
+	printf("Would you like to throw again?\n"); 
+	scanf(" %c", &throwAgain);
+
+	return throwAgain;
+}
+
+//playAgain
+//Handles whether the player wants to play again
+//Pre-condition: none
+//Post-condition: Returns an int being passed back representing a bool value for whether to start another game or not
+int playAgain()
+{
+	char playAgain;
+	printf("Would you like to play again?\n");
+	scanf(" %c", &playAgain);
+	if(playAgain == 'y' || playAgain == 'Y')
+	{
+		return 1;
+	}
+	else if(playAgain == 'n' || playAgain == 'N')
+	{
+		return 0;
+	}
+}
+
+//gameLoop
+//Primary loop for the program, handles each each game of Sarvi Peli
+//Pre-condition: Takes reference values of the player and computer stakes
+//Post-condition: Returns an int representing a bool of whether the player wants to play again or quit
+int gameLoop(int *playerStake, int *compStake)
+{
+	int victory = 126;
+	int playerScore = 0;
+	int compScore = 0;
+	int playerBank = 0;
+	int compBank = 0;
+	int myRandomNum;
+	//used as bool values
+	int playing = 1;
+	int playerTurn = 0;
+	int compTurn = 0;
+	char goFirst = 'n';
+	char throwAgain = 'y';
+
+	printf("Would you like to go first?\n");
+	scanf(" %c", &goFirst);
+
+	if(goFirst == 'y' || goFirst == 'Y')
+	{
+		playerTurn = 1;
+		compTurn = 0;
+	}
+	else if(goFirst == 'n' || goFirst == 'N')
+	{
+		compTurn = 1;
+		playerTurn = 0;
+	}
+
+	while(playing == 1)
+	{
+		printf("Player stake is %d, comp stake is %d\n", *playerStake, *compStake);
+		if(playerTurn == 1 && (playerBank + playerScore < victory))
+		{
+			printf("You have  %d points in the bank.\n", playerBank);
+			myRandomNum = random()%100;
+			playerScore = scoringPlayer(myRandomNum, playerScore, &playerBank,  &playerTurn, &compTurn);
+			if(playerTurn == 1)
+			{
+				throwAgain = keepThrowing();
+				if(throwAgain == 'n')
+				{
+					playerBank += playerScore;
+					playerScore = 0;
+					printf("You've banked %d points.\n", playerBank);
+					playerTurn = 0;
+					compTurn= 1;
+					printf("----------------------------------------------------------------------------------------\n");
+				}
+			}
+			else
+			{
+				playerBank += playerScore;
+                                playerScore = 0;
+				printf("You've banked %d points.\n", playerBank);
+			}
+		}
+		else if(compTurn == 1 && (compBank + compScore < victory))
+		{
+			myRandomNum = random()%100;
+			printf("The comp has %d points in the bank.\n", compBank);
+			compScore = scoringComp(myRandomNum, compScore, &compBank, &playerTurn, &compTurn);
+			printf("The computer has %d points.\n", compScore);
+			if(compScore >= 20 || (compScore + compBank >= victory))
+			{
+				compBank += compScore;
+				compScore = 0;
+				printf("The computer banked %d points.\n", compBank);
+				playerScore = 0;
+				playerTurn = 1;
+				compTurn= 0;
+				 printf("----------------------------------------------------------------------------------------\n");
+			}
+		}
+
+		if(playerBank >= victory)
+		{
+			*playerStake = *playerStake +1;
+			*compStake = *compStake -1;
+			playing = 0;
+			printf("Congratulations!  You won!\n");
+			printf("Your stake is %d!\n", *playerStake);
+			printf("The computer's stake is %d.\n", *compStake);
+
+		}
+
+		if(compBank >= victory)
+		{
+			*compStake = *compStake +1;
+			*playerStake = *playerStake -1;
+			playing = 0;
+			printf("Aww, you lost.\n");
+			printf("Your stake is %d.\n", *playerStake);
+			printf("The computer's stake is %d.\n", *compStake);
+		}
+	}
+
+	return playAgain();
+
+}
+
+int main()
+{
+	char play = 'n';
+	int playerStake = 10;
+	int compStake = 10;
+	EnterRandomSeed();
+	printf("Hello there!\n");
+
+	printf("Would you like to play Sarvi Peli?  \nWhen asked a question enter y for yes or  n for no.\n");
+	scanf(" %c", &play);
+
+	if(play == 'y' || play == 'Y')
+	{
+		int quit = 1;
+		while(quit != 0 && playerStake > 0 && compStake > 0)
+		{
+			quit = gameLoop(&playerStake, &compStake);
+		}
+	}
+	return 0;
+}
+												</code>
+											</pre>
+										</div>
+									  </div>
+									  <div id="otherCode2" class="tab-pane fade">
+										<div class="col-sm-3">
+											<p>
+												<br>
+												<b>Language:</b> Java
+												<br><br>
+												<b>Function:</b> A simulation of a robot sorting items onto shelves.  Done for CSC 201 at Northern Virginia Community College.
+											</p>
+										</div>
+										<div class="col-sm-9">
+											<pre class="pre-scrollable">
+												<code>
+Written by: Zack Laine
+Program: RobotSimulation
+Date written: 11/23/2014
+Date of Modification: 11/30/2014
+Keywords:
+	Variables:
+		serialNum -- the serial number of the object the robot is holding
+		atRow -- how far forward or backward the robot is in regards to rows of shelves
+		mostSigDigit -- the most significant digit of the object held by the robot
+		objectHeld -- if the robot is holding an item
+		moveLeft -- tells whether the robot has moved to the left to place an object on a shelf.
+		moveRight -- tells whether the robot has moved to the right to place an object on a shelf.
+		^^^Variables for the Robot class
+		
+		shelf -- an array that holds the objects placed on the shelves
+		^^^ Variables for Shelf class
+	Segments:
+		Robot goes to pickup station, picks up an item, checks the serial number and most significant digit to see
+		whether it needs to go on a special shelf or just to be split by whether it is even or odd.  It then moves to the correct shelf
+		and determines whether the shelf is full or not -- if not, it will place the item in the nearest open spot.  If it is full it will
+		move to the next shelf on that side, unless it hits a special shelf (5 and 7 are reserved to hold cold and heavy items respectively.
+		After the item has been placed, it returns to the pickup station to continue.  If it cannot place an item, the program stops.
+	Program flow:
+		(For 5/7) returnHome > moveRobot > addItem(Shelf class) > returnHome
+		(All others) returnHome > moveRobot > fillShelf > addItem(Shelf class) > returnHome		
+	Inputs:
+		None
+	Outputs:
+		How the robot is moving, what shelf the item is being placed on, or an error that an item cannot be placed due to lack of shelves.
+
+*/
+
+package RobotSimulation;
+import java.util.*;
+
+public class Robot {
+	
+	int serialNum, atRow, mostSigDigit, weight;
+	boolean objectHeld, moveLeft, moveRight;
+	
+	Robot()
+	{
+		serialNum = 0;
+		atRow = 0;
+		mostSigDigit = 0;
+		weight = 0;
+		objectHeld = false;
+		moveLeft = false;
+		moveRight = false;
+	}
+	
+	//moveRobot
+	//Sets the most significant digit for the item the robot is holding, and if it needs to be refrigerated or placed on the shelf for heavy items,
+	//it moves the robot and places them, otherwise it calls fillShelf to put the item on the odd or even shelves.  Calls addItem or fillShelves.
+	public void check5And7(Shelf shelf0, Shelf shelf1, Shelf shelf2, Shelf shelf3, Shelf shelf4, Shelf shelf5, Shelf shelf6, Shelf shelf7)
+	{	
+		if(this.objectHeld = true)
+		{
+			if(this.mostSigDigit == 5)
+			{
+				serialNum = shelf5.addItem(serialNum, shelf5, 5);
+				if(serialNum == 0)
+				{
+					this.atRow = 2;
+					this.moveLeft = true;
+					System.out.println("Moved to row 2!");
+					System.out.println("Moved left!");
+					System.out.println("Put the item on shelf 5!");
+				}
+				
+				this.returnHome(shelf0, shelf1, shelf2, shelf3, shelf4, shelf5, shelf6, shelf7);
+			}
+			if(this.weight >= 700)
+			{
+				serialNum = shelf7.addItem(serialNum, shelf7, 7);
+				if(serialNum == 0)
+				{
+					this.atRow = 3;
+					this.moveLeft = true;
+					System.out.println("Moved to row 3!");
+					System.out.println("Moved left!");
+					System.out.println("Put the item on shelf 7!");
+				}
+				
+				this.returnHome(shelf0, shelf1, shelf2, shelf3, shelf4, shelf5, shelf6, shelf7);
+			}
+			else
+			{
+				if(serialNum % 2 == 0)
+				{
+					fillShelf(0, serialNum, shelf0, shelf1, shelf2, shelf3, shelf4, shelf5, shelf6, shelf7);
+				}
+				else
+				{
+					fillShelf(1, serialNum, shelf0, shelf1, shelf2, shelf3, shelf4, shelf5, shelf6, shelf7);
+				}
+			}
+		}
+	}
+	
+	//fillShelf
+	//Fills the shelves for even and odd items that do not have special placement needs, calls addItem then returnHome.
+	public void fillShelf(int shelfNum, int serialNum, Shelf shelf0, Shelf shelf1, Shelf shelf2, Shelf shelf3, Shelf shelf4, Shelf shelf5, Shelf shelf6, Shelf shelf7)
+	{
+		//runs through the shelves for the even serial numbers
+		switch(shelfNum)
+		{
+			case 0:
+				if(shelf0.shelf[7] == 0)
+				{
+					serialNum = shelf0.addItem(serialNum, shelf0, 0);
+				}
+				if(serialNum == 0)
+				{
+					this.moveRight = true;
+					System.out.println("Moved right!");
+					System.out.println("Put the item on shelf 0!");
+					this.returnHome(shelf0, shelf1, shelf2, shelf3, shelf4, shelf5, shelf6, shelf7);
+					break;
+				}
+			case 2:
+				if(shelf2.shelf[7] == 0)
+				{
+					serialNum = shelf2.addItem(serialNum, shelf2, 2);
+				}
+				if(serialNum == 0)
+				{
+					this.atRow = 1;
+					this.moveRight = true;
+					System.out.println("Moved to row 1!");
+					System.out.println("Moved right!");
+					System.out.println("Put the item on shelf 2!");
+					this.returnHome(shelf0, shelf1, shelf2, shelf3, shelf4, shelf5, shelf6, shelf7);
+					break;
+				}
+			case 4:
+				if(shelf4.shelf[7] == 0)
+				{
+					serialNum = shelf4.addItem(serialNum, shelf4, 4);
+				}
+				if(serialNum == 0)
+				{
+					this.atRow = 2;
+					this.moveRight = true;
+					System.out.println("Moved to row 2!");
+					System.out.println("Moved right!");
+					System.out.println("Put the item on shelf 4!");
+					this.returnHome(shelf0, shelf1, shelf2, shelf3, shelf4, shelf5, shelf6, shelf7);
+					break;
+				}
+			case 6:
+				if(shelf6.shelf[7] == 0)
+				{
+					serialNum = shelf6.addItem(serialNum, shelf6, 6);
+				}
+				if(serialNum == 0)
+				{
+					this.atRow = 3;
+					this.moveRight = true;
+					System.out.println("Moved to row 3!");
+					System.out.println("Moved right!");
+					System.out.println("Put the item on shelf 6!");
+					this.returnHome(shelf0, shelf1, shelf2, shelf3, shelf4, shelf5, shelf6, shelf7);
+					break;
+				}
+				else
+				{
+					System.out.println("All even-side shelves are full!  Item number " + serialNum + " not placed.");
+					break;
+				}
+		}
+		
+		//runs through the shelves for the odd serial numbers
+		switch(shelfNum)
+		{
+			case 1:
+				if(shelf1.shelf[7] == 0)
+				{
+					serialNum = shelf1.addItem(serialNum, shelf1, 1);
+				}
+				if(serialNum == 0)
+				{
+					this.moveLeft = true;
+					System.out.println("Moved left!");
+					System.out.println("Put the item on shelf 1!");
+					this.returnHome(shelf0, shelf1, shelf2, shelf3, shelf4, shelf5, shelf6, shelf7);
+					break;
+				}
+			case 3:
+				if(shelf3.shelf[7] == 0)
+				{
+					serialNum = shelf3.addItem(serialNum, shelf3, 3);
+				}
+				if(serialNum == 0)
+				{
+					this.atRow = 1;
+					this.moveLeft = true;
+					System.out.println("Moved to row 1!");
+					System.out.println("Moved left!");
+					System.out.println("Put the item on shelf 3!");
+					this.returnHome(shelf0, shelf1, shelf2, shelf3, shelf4, shelf5, shelf6, shelf7);
+					break;
+				}
+				else
+				{
+					System.out.println("All nonspecialty odd-side shelves are full!  Item number " + serialNum + " not placed.");
+					break;
+				}
+		}		
+	}
+	
+	//checkSigDig
+	//finds the most significant digit for the serial number, used for sorting whether an item should go into shelf 5 or 7.
+	public int checkSigDigit(int serialNum)
+	{
+		int sigDigit;
+		sigDigit = serialNum/10000;
+		
+		return sigDigit;
+	}
+	
+	//returnHome
+	//Brings the robot back to the pickup station and has it pick up a new item to shelve.
+	public void returnHome(Shelf shelf0, Shelf shelf1, Shelf shelf2, Shelf shelf3, Shelf shelf4, Shelf shelf5, Shelf shelf6, Shelf shelf7)
+	{
+		if(this.moveLeft == true)
+		{
+			this.moveLeft = false;
+			System.out.println("Moved right!");
+		}
+		
+		if(this.moveRight == true)
+		{
+			this.moveRight = false;
+			System.out.println("Moved left!");
+		}
+		
+		if(this.atRow != 0)
+		{
+			this.atRow = 0;
+			System.out.println("Robot moved to row 0!");
+		}
+		
+		Random rand = new Random();
+		this.serialNum = (rand.nextInt(79998) + 1);
+		this.mostSigDigit = this.checkSigDigit(serialNum);
+		this.objectHeld = true;
+		this.weight = (rand.nextInt(798) + 1);
+		
+		//insures no items that need to be refrigerated are over 700lbs
+		while(this.weight >= 700 && this.mostSigDigit == 5)
+		{
+			this.weight = (rand.nextInt(798) + 1);
+		}
+		
+		this.check5And7(shelf0, shelf1, shelf2, shelf3, shelf4, shelf5, shelf6, shelf7);
+	}
+	
+	public static void main(String[] args) 
+	{
+		Robot robot = new Robot();
+		Shelf shelf0 = new Shelf(0);
+		Shelf shelf1 = new Shelf(1);
+		Shelf shelf2 = new Shelf(2);
+		Shelf shelf3 = new Shelf(3);
+		Shelf shelf4 = new Shelf(4);
+		Shelf shelf5 = new Shelf(5);
+		Shelf shelf6 = new Shelf(6);
+		Shelf shelf7 = new Shelf(7);
+		
+		if(shelf0.shelf[0] == 0)
+		{
+			robot.returnHome(shelf0, shelf1, shelf2, shelf3, shelf4, shelf5, shelf6, shelf7);
+		}
+		
+		shelf0.displayShelf();
+		shelf1.displayShelf();
+		shelf2.displayShelf();
+		shelf3.displayShelf();
+		shelf4.displayShelf();
+		shelf5.displayShelf();
+		shelf6.displayShelf();
+		shelf7.displayShelf();
+	}
+
+}
+												</code>
+											</pre>
+										</div>
+									  </div>
+									  <div id="otherCode3" class="tab-pane fade">
+										<div class="col-sm-3">
+											<p>
+												<br>
+												<b>Language:</b> Javascript
+												<br><br>
+												<b>Function:</b> The playstate code of a game prototype created using Phaser for CS325 at George Mason University.
+												<br><br>
+												Goal of the prototype was experimentation with manual flapping in a less stressful way than flappy birds.
+												The player controls the dragon using the left and right keys for direction, and the space key to flap their wings and take flight.
+												You move significantly faster in the air, and can build up to a maximum speed.
+											</p>
+										</div>
+										<div class="col-sm-9">
+											<pre class="pre-scrollable">
+												<code>
+"use strict";
+
+function PlayState(){};
+var PlayState = function(game)
+{
+    this.world;
+    this.dragon;
+    this.map;
+    this.alive;
+    this.timeCheck = 0;
+    
+    this.floor;
+    this.floorTest;
+    this.prints;
+    this.treeLine;
+    this.blood;
+    this.view;
+    
+    this.printsDone = false;
+    this.treeLineDone = false;
+    this.bloodDone = false;
+    this.viewDone = false;
+    
+    //this.goal;
+    this.style;
+    
+    this.gravity = 500;
+    this.walkSpeed = 100;
+    this.flySpeed = 350;
+    this.baseJump = -100;
+    this.flapHeight = -250;
+    
+    this.startVA;
+    this.footprintsVA;
+    this.treelineVA;
+    this.bloodVA;
+    this.viewVA;
+    this.landedSound;
+    this.flapSound;
+    this.bgm;
+    this.background;
+    
+    this.landed = true;
+}
+
+PlayState.prototype =
+{
+    create: function()
+    {
+        console.log("Play");
+        
+        this.alive = true;
+        
+        this.game.world.setBounds(0, 0, 3200, 1824);
+        this.game.physics.startSystem(Phaser.Physics.ARCADE)
+        
+        //tilemap setup
+        this.map = this.game.add.tilemap('map');
+        // map3 = game.add.tilemap('map');
+        this.map.addTilesetImage('forestBGfull', 'forest');
+        this.background = this.map.createLayer('forestBG');
+        this.background.resizeWorld();
+        this.game.stage.backgroundColor = '#2d2d2d';
+        
+        //event trigger areas setup
+        this.floorTest = this.game.add.sprite(0, (this.game.world.height - 6), 'floor');
+        this.floorTest.scale.set(2);
+        this.prints = this.game.add.sprite(1200, (this.game.world.height - 150), 'footPrints');
+        this.treeLine = this.game.add.sprite(0, (this.game.world.height - 1050), 'treeTops');
+        this.blood = this.game.add.sprite(3000, (this.game.world.height - 900), 'bloodSmell');
+        this.view = this.game.add.sprite(5000, 200, 'townView');
+        
+        //playing music
+        this.bgm = this.game.add.audio('bgm');
+        this.flapSound = this.game.add.audio('flapping');
+        this.startVA = this.game.add.audio('startVA');
+        this.footprintsVA = this.game.add.audio('footprintsVA');
+        this.treelineVA = this.game.add.audio('treelineVA')
+        this.bloodVA = this.game.add.audio('bloodVA');
+        this.viewVA = this.game.add.audio('viewVA');
+        this.landedSound = this.game.add.audio('landed');
+        
+        this.bgm.loop = true;
+        this.bgm.volume = .25;
+        this.bgm.play();
+        this.startVA.play();
+        
+        //character setup
+        this.dragon = this.game.add.sprite(32, this.game.world.height - 150, 'sindra');
+        this.game.physics.arcade.enable(this.dragon);
+        this.dragon.body.bounce.y = 0.2;
+        this.dragon.body.gravity.y = this.gravity;
+        this.dragon.anchor.setTo(.5,.5);
+        this.game.camera.follow(this.dragon);
+        this.dragon.body.collideWorldBounds = true;
+        this.dragon.scale.set(.75);
+        
+        this.dragon.animations.add('takeOffRight', [13, 14, 15, 16], 10, false);
+        this.dragon.animations.add('flyRight', [17, 18, 19, 18], 10, false);
+        this.dragon.animations.add('flyRightSlow', [17, 18, 19, 18], 5, false);
+        this.dragon.animations.add('landRight', [20, 21, 22, 23, 24], 10, false);
+        this.dragon.animations.add('takeOffLeft', [50, 49, 48, 47], 10, false);
+        this.dragon.animations.add('flyLeft', [46, 45, 44, 45], 10, false);
+        this.dragon.animations.add('flyLeftSlow', [46, 45, 44, 45], 5, false);
+        this.dragon.animations.add('landLeft', [43, 42, 41, 40, 39], 10, false);
+        this.dragon.animations.add('death', [26, 27, 28, 29, 30, 31], 10, false);
+        
+        
+        this.flap = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+        this.flap.volume = .5;
+        this.flap.onDown.add(this.flapWait, this);
+        
+        this.style = { font: "15px Arial", fill: "#ffffff", align: "center" };
+        //this.goal = this.game.add.text(16, 16, 'Look around, see if you can see any \nclues that might help you find your hatchling.', this.style);
+        //this.goal.fixedToCamera = true;
+        
+        this.game.input.keyboard.addKeyCapture([Phaser.Keyboard.SPACEBAR]);
+        
+    },
+    
+    update: function()
+    {
+        if(this.timeCheck != 0)
+        {
+            this.dragon.frame = 31;
+        }
+        if(this.timeCheck != 0 && this.game.time.now - this.timeCheck > 5000)
+        {
+            this.timeCheck = 0;
+           // this.dragon.animations.play('death');
+            this.game.state.start("intro");
+        }
+        
+        if(this.eventTrigger(this.dragon, this.floorTest) && this.dragon.body.velocity.y > 100 && this.alive == true)
+        {
+            this.dragon.frame = 31;
+            this.timeCheck = this.game.time.now;
+            console.log("Crashed!!");
+            this.alive = false;
+            
+        }
+        if(this.eventTrigger(this.dragon, this.prints) && this.printsDone == false)
+        {
+        //    this.goal.text = 'Look at this mess of footprints!\nYou are unable to discern what made the tracks,\nbut it looks like your home had unexpected company.\nTake to the air.  If it was another dragon (or he escaped)\nyou should be able to see him once you clear the trees.';
+            this.printsDone = true;
+            this.footprintsVA.play();
+        }
+        
+        if(this.eventTrigger(this.dragon, this.treeLine) && this.printsDone == true && this.treeLineDone == false)
+        {
+       //     this.goal.text = 'Nothing to see up here...\nMaybe you can try to smell something closer to the ground?';
+            this.treeLineDone = true;
+            this.treelineVA.play();
+        }
+        
+        if(this.eventTrigger(this.dragon, this.blood) && this.printsDone == true && this.treeLineDone == true && this.bloodDone == false)
+        {
+        //    this.goal.text = '...This scent...\nHe was injured.\nYou still haven\'t caught the scent of another dragon.\nYou need to see what you can of the nearby town from above the edge of the forest.';
+            this.bloodDone = true;
+            this.bloodVA.play();
+        }
+        
+        if(this.eventTrigger(this.dragon, this.view) && this.printsDone == true && this.treeLineDone == true && this.bloodDone == true && this.viewDone == false)
+        {
+        //    this.goal.text = 'It definitely looks like something has the town excited.\nYou\'re going to need to fly over.\nYou don\'t understand, why would the humans want your hatchling?\nYou\'ve always kept to yourself...';
+            this.viewDone = true;
+            this.viewVA.play();
+        }
+        
+        if(this.dragon.body.onFloor())
+        {
+            if(this.dragon.body.onFloor() && this.landed == false)
+            {
+                this.landed = true;
+                
+                if(this.dragon.body.velocity.y >= 200)
+                {
+                    console.log("Shit son you ded");
+                }
+                this.landedSound.volume = .5;
+                this.landedSound.play();
+            }
+            
+            if(this.game.input.keyboard.isDown(Phaser.Keyboard.A))
+            {
+                // Move to the left
+                this.dragon.body.velocity.x = (0 - this.walkSpeed);
+                this.dragon.animations.play('flyLeftSlow');
+            }
+            else if(this.game.input.keyboard.isDown(Phaser.Keyboard.D))
+            {
+                this.dragon.body.velocity.x = this.walkSpeed;
+                this.dragon.animations.play('flyRightSlow');
+            }
+            else
+            {
+                if(this.dragon.body.velocity.x > 0)
+                {
+                    this.dragon.body.velocity.x -= 5;
+                }
+                else if (this.dragon.body.velocity.x < 0)
+                {
+                    this.dragon.body.velocity.x += 5;
+                }
+                
+                // Stand still
+                this.dragon.animations.stop();
+                if(this.alive == true)
+                {
+                    this.dragon.frame = 7;
+                }
+            }
+        }
+        
+        if (this.game.input.keyboard.isDown(Phaser.Keyboard.D))
+        
+        if (!this.dragon.body.onFloor())
+        {
+            // dragon.frame = 18;
+            // dragon.animations.play('flyRight');
+        }
+         else if(this.game.input.keyboard.isDown(Phaser.Keyboard.A))
+         {
+            // dragon.frame = 45;
+            // dragon.animations.play('flyLeft');
+        }
+        else if (!this.dragon.body.onFloor())
+        {
+            this.dragon.animations.stop();
+            this.dragon.frame = 20;
+        }
+        
+        if(this.dragon.body.velocity.x > 0)
+        {
+            this.dragon.body.velocity.x--;
+        }
+        else if (this.dragon.body.velocity.x < 0)
+        {
+            this.dragon.body.velocity.x++;
+        }
+    },
+    
+    //runs when flap is pressed
+    flapWait: function ()
+    {
+        this.landed = false;
+        
+        if(this.dragon.body.onFloor())
+        {
+            this.dragon.body.velocity.y = this.baseJump;
+            this.dragon.animations.play('takeOffRight');
+        } 
+        
+        if(this.dragon.body.velocity.y > this.flapHeight)
+        {
+            if(this.dragon.body.velocity.y < 0)
+            {
+                //this.dragon.body.velocity.y += (this.flapHeight);
+                this.dragon.body.velocity.y -= 150;
+            }
+            else
+            {
+                //this.dragon.body.velocity.y += this.flapHeight;
+                this.dragon.body.velocity.y -= 250;
+            }
+            
+        }
+        else
+        {
+            //this.dragon.body.velocity.y = this.flapHeight;
+            this.dragon.body.velocity.y = this.flapHeight;
+        }
+        this.flapSound = this.game.add.audio('flapping');
+        this.flapSound.play();
+        
+        if(this.dragon.body.velocity.x > -this.flySpeed)
+        {
+            this.dragon.body.velocity.x -= 50;
+            this.dragon.animations.play('flyLeft');
+        }
+        if(this.dragon.body.velocity.x < this.flySpeed)
+        {
+            this.dragon.body.velocity.x += 50;
+            this.dragon.animations.play('flyRight');
+        }
+        
+        if(this.game.input.keyboard.isDown(Phaser.Keyboard.A))
+        {
+            this.dragon.animations.play('flyLeft');
+            
+            if(this.dragon.body.velocity.x > -this.flySpeed)
+            {
+                this.dragon.body.velocity.x -= 50;
+            }
+        }
+        if(this.game.input.keyboard.isDown(Phaser.Keyboard.D))
+        {
+            this.dragon.animations.play('flyRight');
+            
+            if(this.dragon.body.velocity.x < this.flySpeed)
+            {
+                this.dragon.body.velocity.x += 50;
+            }
+        }
+    },
+    
+    eventTrigger: function(spriteA, spriteB)
+    {
+        var boundsA = spriteA.getBounds();
+        var boundsB = spriteB.getBounds();
+    
+        return Phaser.Rectangle.intersects(boundsA, boundsB);
+    }
+
+};
+												</code>
+											</pre>
+										</div>
+									  </div>
+									  <div id="otherCode4" class="tab-pane fade">
+										<div class="col-sm-3">
+											<p>
+												<br>
+												<b>Language:</b> Python
+												<br><br>
+												<b>Function:</b> A basic data manipulation script I wrote to combine data about schools spread out over multiple 
+												very large CSV files into a single file with only the information we wanted to work with.
+											</p>
+										</div>
+										<div class="col-sm-9">
+											<pre class="pre-scrollable">
+												<code>
+import csv
+
+values = [["" for i in xrange(0)] for i in xrange(8000)]
+majors = {}
+# values[0] has the list of column names
+
+#Directory info
+with open("Directory information.csv", "rb") as csvfile:
+    directoryInfo = csv.reader(csvfile, delimiter=",", quotechar='"')
+    i = 0
+    for row in directoryInfo:
+
+        #Adds the specified column to the entry for the school
+        #Basic data for the school, 0 is the uID
+        values[i].append(row[0])
+        values[i].append(row[1])
+        values[i].append(row[2])
+        values[i].append(row[3])
+        values[i].append(row[4])
+        values[i].append(row[5])
+        values[i].append(row[17])
+        #should be whether the school is public or private, but it is represented as a numerical scale -- need to decipher.
+        values[i].append(row[23])
+        i=i+1
+
+#Educational Offerings
+with open("Educational offerings, organization, services and athletic associations.csv", "rb") as csvfile:
+    directoryInfo = csv.reader(csvfile, delimiter=",", quotechar='"')
+    i = 0
+    for row in directoryInfo:
+        if row[0] == "UNITID":
+            values[0].append(row[11])
+            values[0].append(row[12])
+            values[0].append(row[13])
+            values[0].append(row[14])
+            values[0].append(row[15])
+            values[0].append(row[16])
+            values[0].append(row[17])
+            values[0].append(row[18])
+            values[0].append(row[19])
+            values[0].append(row[20])
+            values[0].append(row[21])
+            values[0].append(row[22])
+            #next four give info on if AP, dual credit, or life experience is accepted
+            values[0].append(row[24])
+            values[0].append(row[25])
+            values[0].append(row[26])
+            values[0].append(row[27])
+            #next four give info on distance learning options
+            values[0].append(row[97])
+            values[0].append(row[98])
+            values[0].append(row[99])
+            values[0].append(row[100])
+        #checks the uid for the new file against the uID for each stored school and adds the info to the correct entry when it finds a match
+        try:
+            for value in values:
+                if (row[0] == value[0]) and row[0] != "UNITID" and i < 7800:
+                    #Adds the specified column to the entry for the school
+                    #These tell if the school offers certain levels of programs, from less than one year through doctorate programs
+                    value.append(row[12])
+                    value.append(row[13])
+                    value.append(row[14])
+                    value.append(row[15])
+                    value.append(row[16])
+                    value.append(row[17])
+                    value.append(row[18])
+                    value.append(row[19])
+                    value.append(row[20])
+                    value.append(row[21])
+                    value.append(row[22])
+                    value.append(row[23])
+                    #next four give info on if AP, dual credit, or life experience is accepted
+                    value.append(row[25])
+                    value.append(row[26])
+                    value.append(row[27])
+                    value.append(row[28])
+                    #next four give info on distance learning options
+                    value.append(row[97])
+                    value.append(row[98])
+                    value.append(row[99])
+                    value.append(row[100])
+                    #value[i].append("\n")
+                    i=i+1
+
+        except IndexError:
+                pass
+
+#Admissions info
+with open("Admission considerations, applications, admissions, enrollees and test scores.csv", "rb") as csvfile:
+    directoryInfo = csv.reader(csvfile, delimiter=",", quotechar='"')
+    i = 0
+    for row in directoryInfo:
+        if row[0] == "UNITID":
+            values[0].append(row[11])
+            values[0].append(row[13])
+            values[0].append(row[15])
+            values[0].append(row[17])
+            values[0].append(row[19])
+            values[0].append(row[21])
+            values[0].append(row[23])
+            #SAT titles
+            values[0].append(row[49])
+            values[0].append(row[51])
+            values[0].append(row[53])
+            values[0].append(row[55])
+            values[0].append(row[57])
+            values[0].append(row[59])
+            #ACT titles
+            values[0].append(row[61])
+            values[0].append(row[63])
+            values[0].append(row[65])
+            values[0].append(row[67])
+            values[0].append(row[69])
+            values[0].append(row[71])
+            values[0].append(row[73])
+            values[0].append(row[75])
+        #checks the uid for the new file against the uID for each stored school and adds the info to the correct entry when it finds a match
+        #if row[0] !="PEO1ISTR":
+        try:
+            for value in values:
+                if (row[0] == value[0]) and row[0] != "UNITID" and i < 7800:
+                    #Adds the specified column to the entry for the school
+                    #value.append(row[0])
+                    #These give info on application and admissions in total and by gender
+                    value.append(row[11])
+                    value.append(row[13])
+                    value.append(row[15])
+                    value.append(row[17])
+                    value.append(row[19])
+                    value.append(row[21])
+                    value.append(row[23])
+                    #SAT info
+                    value.append(row[49])
+                    value.append(row[51])
+                    value.append(row[53])
+                    value.append(row[55])
+                    value.append(row[57])
+                    value.append(row[59])
+                    #ACT info
+                    value.append(row[61])
+                    value.append(row[63])
+                    value.append(row[65])
+                    value.append(row[67])
+                    value.append(row[69])
+                    value.append(row[71])
+                    value.append(row[73])
+                    value.append(row[75])
+                    i=i+1
+
+        except IndexError:
+                pass
+
+#Tuition costs
+with open("Student charges for academic year programs.csv", "rb") as csvfile:
+    directoryInfo = csv.reader(csvfile, delimiter=",", quotechar='"')
+    i = 0
+    for row in directoryInfo:
+        if row[0] == "UNITID":
+            #undergrad costs
+            values[0].append(row[8])
+            values[0].append(row[10])
+            values[0].append(row[12])
+            values[0].append(row[14])
+            values[0].append(row[16])
+            values[0].append(row[18])
+            #Graduate costs
+            values[0].append(row[26])
+            values[0].append(row[28])
+            values[0].append(row[30])
+            values[0].append(row[32])
+            values[0].append(row[34])
+            values[0].append(row[36])
+        #checks the uid for the new file against the uID for each stored school and adds the info to the correct entry when it finds a match
+        #if row[0] !="PEO1ISTR":
+        try:
+            for value in values:
+                if (row[0] == value[0]) and row[0] != "UNITID" and i < 7800:
+                    #Adds the specified column to the entry for the school
+                    #value.append(row[0])
+                    #undergrad costs
+
+                    value.append(row[8])
+                    value.append(row[10])
+                    value.append(row[12])
+                    value.append(row[14])
+                    value.append(row[16])
+                    value.append(row[18])
+                    #grad costs
+                    value.append(row[26])
+                    value.append(row[28])
+                    value.append(row[30])
+                    value.append(row[32])
+                    value.append(row[34])
+                    value.append(row[36])
+                    i=i+1
+
+        except IndexError:
+                pass
+
+with open("major_codes.csv", "rb") as csvfile2:
+    majorInfo = csv.reader(csvfile2, delimiter=",", quotechar='"')
+    for row in majorInfo:
+        majors[row[0]] = row[1]
+
+#Majors
+with open("Number of programs offered.csv", "rb") as csvfile:
+    directoryInfo = csv.reader(csvfile, delimiter=",", quotechar='"')
+    i = 0
+    for row in directoryInfo:
+        if row[0] == "UNITID":
+            #major list
+            values[0].append(row[1])
+        #checks the uid for the new file against the uID for each stored school and adds the info to the correct entry when it finds a match
+        #if row[0] !="PEO1ISTR":
+        try:
+            for value in values:
+                if (row[0] == value[0]) and row[0] != "UNITID" and i < 28000:
+
+                    #Adds the specified column to the entry for the school
+                    #adds a major
+                    try:
+                        value[60] += " " + row[1]
+                    except:
+                        value.append(row[1])
+                    i=i+1
+
+        except IndexError:
+                pass
+
+    #for value in values:
+    #value[0] is the uID
+     #   print value
+
+
+
+#writes the data to a new csv file
+with open('IPEDS_data.csv', 'wb') as csvfile:
+    schoolData = csv.writer(csvfile, delimiter=",", quotechar='"', quoting=csv.QUOTE_MINIMAL)
+    for value in values:
+        i= 0
+        schoolData.writerow(value)
+        i=i+1
+												</code>
+											</pre>
+										</div>
+									  </div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				<div class="mobileOnly" style="height:16px; width:100%; display: inline-block;">
+				</div>
+			</div>
+			<script>
+				var resizeTime = new Date(1, 1, 2000, 12,00,00);
+				var timeout = false;
+				var delta = 150;
+				$(window).resize(
+					function()
+					{
+						ScrollResize();
+						resizeTime = new Date();
+						if (timeout === false)
+						{
+							timeout = true;
+							setTimeout(resizeEnd, delta);
+						}
+						ResizePage();
+					}
+				);
+
+				function resizeEnd()
+				{
+					if (new Date() - resizeTime < delta)
+					{
+						setTimeout(resizeEnd, delta);
+					}
+					else
+					{
+						ResizePage();
+						timeout = false;
+					}
+				}
+				
+				function ResizePage()
+				{
+					var leftBarWidth = 400;
+					var mobile = false;
+					if ($(window).width() > 1400)
+					{
+						$( "#leftBar" ).css( "width", "400px" );
+					}
+					else if ($(window).width() > 1024)
+					{
+						//leftBarWidth = Math.round($(window).width() * 0.36);
+						//$( "#leftBar" ).css( "width", leftBarWidth + "px" );
+						$( "#leftBar" ).css( "width", "400px" );
+					}
+					else if ($(window).width() > 900)
+					{
+						//$( "#leftBar" ).css( "width", "320px" );
+						$( "#leftBar" ).css( "width", "400px" );
+					}
+					else
+					{
+						$( "#leftBar" ).css( "width", $(window).width() + "px");
+						mobile = true;
+					}
+					
+					if ($(window).width() <= 1024 || $(window).height() < 628)
+					{
+						$( ".leftBarContent" ).css(
+							{
+								"width": "90%",
+								"margin-left": "-45%"
+							}
+						);
+						
+						$( ".verticalContentSeperator" ).css(
+							{
+								"height": "1px"
+							}
+						);
+						
+						$( ".verticalContentSeperatorLine" ).css(
+							{
+								"width": "64px",
+								"margin-left": "-32px"
+							}
+						);
+						
+						$( ".leftBarSpacer" ).css( "height", "9px" );
+						
+						if (($("#leftBar").width() < 400 && $(window).width() > 512) || ($(window).width() < 400))
+						{
+							//small
+							$( "#developerLogo" ).attr("src", "assets/nameSmall.png");
+						}
+						else if ($(window).width() <= 640)
+						{
+							//medium
+							$( "#developerLogo" ).attr("src", "assets/nameSmall.png");
+						}
+						else
+						{
+							//regular size
+							$( "#developerLogo" ).attr("src", "assets/nameSmall.png");
+						}
+					}
+					else
+					{
+						$( ".leftBarContent" ).css(
+							{
+								"width": "80%",
+								"margin-left": "-40%"
+							}
+						);
+						
+						$( ".verticalContentSeperator" ).css(
+							{
+								"height": "3px"
+							}
+						);
+						
+						$( ".verticalContentSeperatorLine" ).css(
+							{
+								"width": "128px",
+								"margin-left": "-64px"
+							}
+						);
+						
+						$( ".leftBarSpacer" ).css( "height", "16px" );
+						
+						$( "#developerLogo" ).attr("src", "assets/nameSmall.png");
+					}
+					
+					if ($(window).height() < 676 || mobile)
+					{
+						$( "#topLeftBarSpacer" ).css( "height", "16px" );
+					}
+					else
+					{
+						$( "#topLeftBarSpacer" ).css( "height", "64px" );
+					}
+													
+					if (mobile)
+					{
+						$( ".mobileErase" ).css(
+							{
+								"display": "none"
+							}
+						);
+						
+						$( ".mobileOnly" ).css(
+							{
+								"display": "inline-block"
+							}
+						);
+						
+						$( ".mobileOnlyInline" ).css(
+							{
+								"display": "inline-block"
+							}
+						);
+						$( "#leftBar" ).css(
+							{
+								"height": "auto"
+							}
+						);
+					}
+					else
+					{
+						$( ".mobileErase" ).css(
+							{
+								"display": "inline"
+							}
+						);
+						
+						$( ".mobileOnly" ).css(
+							{
+								"display": "none"
+							}
+						);
+						
+						$( ".mobileOnlyInline" ).css(
+							{
+								"display": "none"
+							}
+						);
+						
+						$( "#leftBar" ).css(
+							{
+								"height": "100%"
+							}
+						);
+					}
+					ResizeContent();
+				}
+				
+				function ResizeContentBar()
+				{
+					var contentWidth = 900;
+					if ($(window).width() > 900)
+					{
+						contentWidth = $('body').innerWidth() - $( "#leftBar" ).width();
+						$( "#contentBar" ).css(
+							{
+								"width": contentWidth + "px",
+								"margin-left": Math.floor($( "#leftBar" ).width()) - 1 + "px",
+								"margin-top": "0px",
+								"position": "absolute"
+							}
+						);
+					}
+					else
+					{
+						contentWidth = $(window).width();
+						$( "#contentBar" ).css(
+							{
+								"width": contentWidth + "px",
+								"margin-left": "0px",
+								"margin-top": "0px",
+								"position" : "relative"
+							}
+						);
+					}
+					return contentWidth;
+				}
+				
+				function ResizeContent()
+				{
+					var contentWidth = ResizeContentBar();
+					
+					if ($('body').innerWidth() >= 1600)
+					{
+						var scaleDown = 0.85;
+						
+						if ($('body').innerWidth() >= 2000)
+						{
+							scaleDown = 0.7;
+						}
+						
+						var oneMinusScaleDown = 1.0 - scaleDown;
+						
+						var newWidth = Math.round(contentWidth * scaleDown);
+						
+						$( ".contentBox" ).css
+						(
+							{
+								"width" : newWidth + "px",
+								"margin-left" : Math.floor(contentWidth * (oneMinusScaleDown * 0.5)) + "px"
+							}
+						);
+						
+						$( ".contentBoxTitleAndImage" ).css
+						(
+							{
+								"width" : Math.floor(newWidth * 0.65) + "px"
+							}
+						);
+						
+						$( ".contentBoxDescription" ).css
+						(
+							{
+								"width" : Math.floor(newWidth * 0.3) + "px",
+								"margin-top" : "96px",
+								"margin-left" : "5%",
+								"font-size" : "100%"
+							}
+						);
+						
+						$( ".contentBoxTitle" ).css
+						(
+							{
+								"height" : "96px",
+								"line-height" : "96px"
+							}
+						);
+					}
+					else if ($('body').innerWidth() < 1600 && $('body').innerWidth() > 1100)
+					{
+						var newWidth = Math.round(contentWidth * 0.9);
+						$( ".contentBox" ).css
+						(
+							{
+								"width" : newWidth + "px",
+								"margin-left" : Math.floor(contentWidth * 0.05) + "px"
+							}
+						);
+						
+						$( ".contentBoxTitleAndImage" ).css
+						(
+							{
+								"width" : Math.floor(newWidth * 0.55) + "px"
+							}
+						);
+						
+						$( ".contentBoxDescription" ).css
+						(
+							{
+								"width" : Math.floor(newWidth * 0.4) + "px",
+								"margin-top" : "64px",
+								"margin-left" : "5%",
+								"font-size" : "100%"
+							}
+						);
+						
+						$( ".contentBoxTitle" ).css
+						(
+							{
+								"height" : "64px",
+								"line-height" : "64px"
+							}
+						);
+					}
+					else if ( $('body').innerWidth() > 900)
+					{
+						var newWidth = Math.round(contentWidth * 0.95);
+						$( ".contentBox" ).css
+						(
+							{
+								"width" : newWidth + "px",
+								"margin-left" : Math.floor(contentWidth * 0.025) + "px"
+							}
+						);
+						
+						$( ".contentBoxTitleAndImage" ).css
+						(
+							{
+								"width" : Math.floor(newWidth * 0.6) + "px"
+							}
+						);
+						
+						$( ".contentBoxDescription" ).css
+						(
+							{
+								"width" : Math.floor(newWidth * 0.35) + "px",
+								"margin-top" : "64px",
+								"margin-left" : "5%",
+								"font-size" : "100%"
+							}
+						);
+						
+						$( ".contentBoxTitle" ).css
+						(
+							{
+								"height" : "64px",
+								"line-height" : "64px"
+							}
+						);
+					}
+					else
+					{
+						var newWidth = contentWidth;
+						$( ".contentBox" ).css
+						(
+							{
+								"width" : newWidth + "px",
+								"margin-left" : "0px"
+							}
+						);
+						
+						$( ".contentBoxTitleAndImage" ).css
+						(
+							{
+								"width" : newWidth + "px",
+								"margin-left" : "0px"
+							}
+						);
+						$( ".contentBoxDescription" ).css
+						(
+							{
+								"width" : (newWidth - 32) + "px",
+								"margin-top" : "16px",
+								"margin-left" : "16px",
+								"font-size" : "110%"
+							}
+						);
+						
+						$( ".contentBoxTitle" ).css
+						(
+							{
+								"height" : "64px",
+								"line-height" : "64px"
+							}
+						);
+					}
+				}
+				
+				/*function CopyrightYears()
+				{
+					var date = new Date();
+					var year = date.getFullYear();
+					if (year != 2015)
+					{
+						year = "2015-" + year;
+					}
+					$( "#copyright" ).html("©" + year + " Zack Laine");
+					$( "#copyrightMobile" ).html("©" + year + " Zack Laine");
+				} */
+				
+				$( document ).ready
+				(
+					function()
+					{
+						ResizePage();
+						CopyrightYears();
+					}
+				);
+				
+				function ScrollResize()
+				{
+					if ($(window).width() > 900)
+					{
+						var top = $( window ).scrollTop();
+						var maxTop = ($( "#contentBar" ).height() + 32 - $( window ).height());
+						if (top > maxTop)
+						{
+							$ ( window ).scrollTop( $( "#contentBar" ).height() + 32 - $( window ).height() );
+						}
+						
+						$( "#leftBar" ).css
+						(
+							{
+								"margin-top" : $( window ).scrollTop()
+							}
+						);
+						
+					}
+					else
+					{
+						$( "#leftBar" ).css
+						(
+							{
+								"margin-top" : "0px"
+							}
+						);
+					}
+				}
+				$( window ).scroll(
+					function()
+					{
+						ScrollResize();
+					}
+				);
+			</script>
+		</div>
+	</body>
+</html>
